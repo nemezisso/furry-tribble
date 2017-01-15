@@ -10,12 +10,15 @@ public class Hangman {
     private int chance=0;
     
     public Hangman(char[] searchWord){
-        hiddenCharacter=new ArrayList();
-        hiddenCharacter.add(0, "-");
         this.searchWord=searchWord;
-        playerWord= new ArrayList(searchWord.length);
+            hiddenCharacter=new ArrayList();
+            hiddenCharacter.add(0, "-");
+            playerWord= new ArrayList(searchWord.length);
+        
         for(int i=0;i<searchWord.length;i++)
             playerWord.add(hiddenCharacter.get(0));
+        char space=' ';
+        start(space);
     }
     
     public void start(char character){
@@ -45,7 +48,7 @@ public class Hangman {
             System.out.print(o);
         }
         System.out.println();
-        
+        showHangman();
     }
     public void verificationGame(){
         int verInfo=0;
@@ -61,15 +64,81 @@ public class Hangman {
     }
     
     private void winner(){
-            System.out.println("YOU WIN!\n"+"Hasło to: ");
+            System.out.println("YOU WIN!\n"+"Word: ");
             for(Object o : playerWord)
                 System.out.print(o);
             System.out.println();
             System.exit(0);
     }
     private void defeat(){
-        System.out.println("YOU LOST!");
+        System.out.println("YOU LOST! Word:");
+        for(Object o : searchWord)
+                System.out.print(o);
+        System.out.println();
+        showHangman();
+        
         System.exit(0);
+    }
+    private void showHangman(){
+        switch(chance){
+            case 1:
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                break;
+            case 2:
+                System.out.println("|------");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                break;
+            case 3:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|");
+                break;
+            case 4:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|     O");
+                System.out.println("|");
+                System.out.println("|");
+                break;
+            case 5:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|     O");
+                System.out.println("|     |");
+                System.out.println("|");
+                break;
+            case 6:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|     O");
+                System.out.println("|    /|\\");
+                System.out.println("|");
+                break;
+            case 7:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|     O");
+                System.out.println("|    /|\\");
+                System.out.println("|    / ");
+                break;
+            case 8:
+                System.out.println("|------");
+                System.out.println("|     |");
+                System.out.println("|     O");
+                System.out.println("|    /|\\");
+                System.out.println("|    / \\");
+                break;
+        }
+            
     }
     
 }
